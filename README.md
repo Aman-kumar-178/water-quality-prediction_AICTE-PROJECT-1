@@ -39,31 +39,50 @@ The result is shown on the screen with safety indicators.
 
  # Safe Water Criteria (Example Rules)
 Pollutant	Safe Range (Example)
+
 O₂	> 5 mg/L
+
 NO₃	< 10 mg/L
+
 NO₂	< 1 mg/L
+
 SO₄	< 250 mg/L
+
 PO₄	< 0.5 mg/L
+
 CL	< 250 mg/L
+
 You can modify these ranges in the app logic to reflect your region's standards.
 
  # Model Training (Brief)
 Algorithm used: e.g., Random Forest Regressor , MultiOutput Regression
+
 Trained on historical data of water quality from various monitoring stations
+
 Features: Year, Station ID (One-hot encoded), others (if available)
 
 # Tool used
 pandas
+
 numpy
+
 joblib
+
 scikit-learn
+
 streamlit
+
 Matplotlib
+
 Seaborn
+
 Jupyter Notebook
  # Model Performance
+
 The model was evaluated using:
+
 R² Score
+
 Mean Squared Error (MSE)
 # Model link:
 Model link for columns:https://drive.google.com/file/d/1FwzNKS3WvLOt0a-Xe7EgnOB8B4yN2CTr/view?usp=drive_link
@@ -75,7 +94,10 @@ This project aims to raise awareness about water pollution and help make data-dr
 
 # Contact
 For questions or collaborations, reach out to:
+
 Name:Aman kumar
+
 Email:aman 1782003@gmail.com
+
 GitHub: https://github.com/Aman-kumar-178.
 
