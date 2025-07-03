@@ -67,6 +67,7 @@ R² Score
 Mean Squared Error (MSE)
 # Model link:
 Model link for columns:https://drive.google.com/file/d/1FwzNKS3WvLOt0a-Xe7EgnOB8B4yN2CTr/view?usp=drive_link
+
 Model link for pollutin:https://drive.google.com/file/d/11VMiho6ikieZ_BgQZxaruwHxqFlMykcs/view?usp=drive_link
 
  # Inspiration
