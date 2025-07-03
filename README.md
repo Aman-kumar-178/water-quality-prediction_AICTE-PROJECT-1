@@ -92,6 +92,15 @@ Model link for pollutin:https://drive.google.com/file/d/11VMiho6ikieZ_BgQZxaruwH
  # Inspiration
 This project aims to raise awareness about water pollution and help make data-driven decisions for clean water initiatives.
 
+# Internship Details
+Internship Type: AICTE Virtual Internship - Edunet Foundation
+
+Sponsor: Shell
+
+Duration: June 2025 (1 month)
+
+Focus Area: Machine Learning in Environmental Monitoring
+
 # Contact
 For questions or collaborations, reach out to:
 
