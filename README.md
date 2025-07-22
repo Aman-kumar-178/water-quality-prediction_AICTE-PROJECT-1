@@ -106,7 +106,7 @@ For questions or collaborations, reach out to:
 
 Name:Aman kumar
 
-Email:aman 1782003@gmail.com
+Email: aman1782003@gmail.com
 
 GitHub: https://github.com/Aman-kumar-178.
 
