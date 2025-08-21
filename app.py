@@ -1,4 +1,4 @@
-# Import all the necessary libraries
+# --- Import all the necessary libraries ---
 import pandas as pd
 import numpy as np
 import joblib 
@@ -8,43 +8,44 @@ import os
 
 st.set_page_config(page_title="Water Pollutants Predictor", layout="centered")
 
-# Google Drive links (replace with your file IDs)
+# --- Google Drive links (replace with your actual file IDs) ---
 MODEL_URL = "https://drive.google.com/uc?id=YOUR_MODEL_FILE_ID"
 COLS_URL = "https://drive.google.com/uc?id=YOUR_MODEL_COLS_FILE_ID"
 
 MODEL_PATH = "pollution_model.pkl"
 COLS_PATH = "model_columns.pkl"
 
-# Function to safely download from Google Drive
-def download_file(url, output):
+# --- Function to safely download from Google Drive ---
+def download_file(url, output, min_size=50000):
     if not os.path.exists(output):
         st.write(f"📥 Downloading {output} ...")
         gdown.download(url, output, quiet=False)
-    if os.path.exists(output) and os.path.getsize(output) < 50000:  # at least 50KB
+    if os.path.exists(output) and os.path.getsize(output) < min_size:
         st.error(f"❌ {output} file seems corrupted or not downloaded properly!")
         st.stop()
 
-# Download model + columns
+# --- Download model + columns ---
 download_file(MODEL_URL, MODEL_PATH)
 download_file(COLS_URL, COLS_PATH)
 
-# Load model safely
+# --- Load model safely ---
 try:
     model = joblib.load(MODEL_PATH)
     model_cols = joblib.load(COLS_PATH)
 except Exception as e:
-    st.error(f"❌ Model load error: {e}")
+    st.error("⚠️ Model file seems corrupted or not compatible with this environment!")
+    st.write(e)  # debug info
     st.stop()
 
 # --- Streamlit App UI ---
 st.title("💧 Water Pollutants Predictor")
 st.write("Predict the water pollutants based on **Year** and **Station ID**")
 
-# User inputs
+# --- User inputs ---
 year_input = st.number_input("Enter Year", min_value=2000, max_value=2100, value=2022)
 station_id = st.text_input("Enter Station ID", value='1')
 
-# Pollutant safe limits
+# --- Pollutant safe limits ---
 safe_limits = {
     'O2': 4.0,      # mg/L minimum dissolved oxygen
     'NO3': 10.0,    # mg/L
@@ -54,7 +55,7 @@ safe_limits = {
     'CL': 250.0     # mg/L
 }
 
-# Prediction on button click
+# --- Prediction button ---
 if st.button('Predict'):
     if not station_id:
         st.warning('⚠️ Please enter the station ID')
@@ -102,10 +103,6 @@ if st.button('Predict'):
                     st.write(f"🔴 **{p}** is too HIGH: {actual_value:.2f} mg/L (should be ≤ {safe_limits[p]} mg/L).")
 
             st.info("💡 To make the water safe, pollutants must be within safe limits.")
-
-
-
-
 
 
 
