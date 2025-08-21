@@ -9,8 +9,8 @@ import os
 st.set_page_config(page_title="Water Pollutants Predictor", layout="centered")
 
 # --- Google Drive links (replace with your actual file IDs) ---
-MODEL_URL = "https://drive.google.com/uc?id=YOUR_MODEL_FILE_ID"
-COLS_URL = "https://drive.google.com/uc?id=YOUR_MODEL_COLS_FILE_ID"
+MODEL_URL = "https://drive.google.com/file/d/1FwzNKS3WvLOt0a-Xe7EgnOB8B4yN2CTr/view?usp=drive_link"
+COLS_URL = "https://drive.google.com/file/d/11VMiho6ikieZ_BgQZxaruwHxqFlMykcs/view?usp=drive_link"
 
 MODEL_PATH = "pollution_model.pkl"
 COLS_PATH = "model_columns.pkl"
@@ -103,6 +103,7 @@ if st.button('Predict'):
                     st.write(f"🔴 **{p}** is too HIGH: {actual_value:.2f} mg/L (should be ≤ {safe_limits[p]} mg/L).")
 
             st.info("💡 To make the water safe, pollutants must be within safe limits.")
+
 
 
 
