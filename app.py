@@ -1,4 +1,4 @@
-# --- Import all the necessary libraries ---
+# --- Import Libraries ---
 import pandas as pd
 import numpy as np
 import joblib 
@@ -9,8 +9,8 @@ import os
 st.set_page_config(page_title="Water Pollutants Predictor", layout="centered")
 
 # --- Google Drive links (replace with your actual file IDs) ---
-MODEL_URL = "https://drive.google.com/uc?id=1FwzNKS3WvLOt0a-Xe7EgnOB8B4yN2CTr"
-COLS_URL = "https://drive.google.com/uc?id=11VMiho6ikieZ_BgQZxaruwHxqFlMykcs"
+MODEL_URL = "https://drive.google.com/uc?id=1FwzNKS3WvLOt0a-Xe7EgnOB8B4yN2CTr"  # model.pkl
+COLS_URL = "https://drive.google.com/uc?id=11VMiho6ikieZ_BgQZxaruwHxqFlMykcs"  # model_columns.pkl
 
 MODEL_PATH = "pollution_model.pkl"
 COLS_PATH = "model_columns.pkl"
@@ -103,7 +103,5 @@ if st.button('Predict'):
                     st.write(f"🔴 **{p}** is too HIGH: {actual_value:.2f} mg/L (should be ≤ {safe_limits[p]} mg/L).")
 
             st.info("💡 To make the water safe, pollutants must be within safe limits.")
-
-
 
 
