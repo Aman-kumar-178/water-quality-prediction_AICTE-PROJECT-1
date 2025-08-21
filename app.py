@@ -1,4 +1,3 @@
-# --- Import Libraries ---
 import pandas as pd
 import numpy as np
 import joblib 
@@ -8,9 +7,9 @@ import os
 
 st.set_page_config(page_title="Water Pollutants Predictor", layout="centered")
 
-# --- Google Drive links (replace with your actual file IDs) ---
-MODEL_URL = "https://drive.google.com/uc?id=1FwzNKS3WvLOt0a-Xe7EgnOB8B4yN2CTr"  # model.pkl
-COLS_URL = "https://drive.google.com/uc?id=11VMiho6ikieZ_BgQZxaruwHxqFlMykcs"  # model_columns.pkl
+# --- Google Drive direct download links ---
+MODEL_URL = "https://drive.google.com/uc?id=1FwzNKS3WvLOt0a-Xe7EgnOB8B4yN2CTr"   # model file ID se banaya
+COLS_URL = "https://drive.google.com/uc?id=11VMiho6ikieZ_BgQZxaruwHxqFlMykcs"   # columns file ID se banaya
 
 MODEL_PATH = "pollution_model.pkl"
 COLS_PATH = "model_columns.pkl"
@@ -20,8 +19,16 @@ def download_file(url, output, min_size=50000):
     if not os.path.exists(output):
         st.write(f"📥 Downloading {output} ...")
         gdown.download(url, output, quiet=False, fuzzy=True)
-    if os.path.exists(output) and os.path.getsize(output) < min_size:
-        st.error(f"❌ {output} file seems corrupted or not downloaded properly!")
+
+    # Debugging: Check file size
+    if os.path.exists(output):
+        file_size = os.path.getsize(output)
+        st.write(f"✅ {output} downloaded (size: {file_size} bytes)")
+        if file_size < min_size:
+            st.error(f"❌ {output} seems corrupted (too small)!")
+            st.stop()
+    else:
+        st.error(f"❌ {output} not found after download!")
         st.stop()
 
 # --- Download model + columns ---
@@ -103,5 +110,6 @@ if st.button('Predict'):
                     st.write(f"🔴 **{p}** is too HIGH: {actual_value:.2f} mg/L (should be ≤ {safe_limits[p]} mg/L).")
 
             st.info("💡 To make the water safe, pollutants must be within safe limits.")
+
 
 
